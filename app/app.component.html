@@ -1,12 +1,13 @@
-<GridLayout rows="*" columns="*">
-    <GridLayout row="0" col="0" style="margin:5px" rows="70 50 *" columns="auto auto">
+<GridLayout modal-dialog-host rows="*" columns="*">
+    <GridLayout row="0" col="0" style="margin:5px" rows="70 50 *" columns="auto 100 auto">
         <Button row="0" col="0" #fbt text="Load from web" id="web" (tap)="loadPdf(fbt.id)" textWrap="true"></Button>
         <Button row="0" col="1" #sbt text="Load from file" id="file" (tap)="loadPdf(sbt.id)" textWrap="true"></Button>
-        <StackLayout row="1" col="0" colSpan="2">
+        <Button row="0" col="2" #sbt text="FullScreen" id="file" (tap)="createModelView(pv.src)" textWrap="true"></Button>
+        <StackLayout row="1" col="0" colSpan="3">
             <TextField width="300" #tf class="textbox"  hint="Past the url to open your own pdf" [(ngModel)]="customUrl" returnKeyType="done" (returnPress)="submit(tf.text)" autocorrect="false" autocapitalizationType="none"></TextField>
         </StackLayout>
-        <StackLayout width="100%" row="2" col="0" colSpan="2" >
-            <PDFView  [src]="loadfile"></PDFView>
+        <StackLayout  width="100%" row="2" col="0" colSpan="3" >
+            <PDFView #pv (doubleTap)="createModelView(pv.src)" [src]="loadfile"></PDFView>
         </StackLayout>
         
         
